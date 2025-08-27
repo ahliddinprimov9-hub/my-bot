@@ -1,13 +1,16 @@
+import os
 from telethon import TelegramClient, events
+from telethon.tl.functions.account import UpdateProfileRequest
 from datetime import datetime
 import asyncio
 
-# API ma'lumotlaring
-API_ID = 21716532
-API_HASH = "4a9ea732220e7d827166f5b0780426c4"
+# API ma'lumotlari ENV-dan olinadi
+API_ID = int(os.environ.get("API_ID"))
+API_HASH = os.environ.get("API_HASH"))
+BOT_PHONE = os.environ.get("BOT_PHONE")  # telefon raqam ENV-dan olinadi
 
-# Session nomi
-client = TelegramClient("userbot", API_ID, API_HASH)
+# Session nomi va client
+client = TelegramClient("userbot", API_ID, API_HASH).start(phone=BOT_PHONE)
 
 # Soat style (bezakli)
 def get_clock():
@@ -30,7 +33,7 @@ async def handler(event):
 
 # Botni ishga tushurish
 async def main():
-    await client.start()
+    await client.start(phone=BOT_PHONE)
     print("✅ Userbot ishlayapti...")
     await update_name()
 
