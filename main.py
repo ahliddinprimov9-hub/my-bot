@@ -1,16 +1,14 @@
-import os
 from telethon import TelegramClient, events
 from telethon.tl.functions.account import UpdateProfileRequest
 from datetime import datetime
 import asyncio
 
-# API ma'lumotlari ENV-dan olinadi
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
-BOT_PHONE = os.environ.get("BOT_PHONE")  # telefon raqam ENV-dan olinadi
+# API ma'lumotlari
+API_ID = 21716532
+API_HASH = "4a9ea732220e7d827166f5b0780426c4"
 
-# Session nomi va client
-client = TelegramClient("userbot", API_ID, API_HASH).start(phone=BOT_PHONE)
+# Sessiya fayli oldin lokalda yaratildi, input so‘ramaydi
+client = TelegramClient("userbot", API_ID, API_HASH)
 
 # Soat style (bezakli)
 def get_clock():
@@ -29,11 +27,11 @@ async def update_name():
 # Avto-javob (Lickada)
 @client.on(events.NewMessage(pattern="licka"))
 async def handler(event):
-    await event.reply("🤖 Salom! Men avto-javob botman Javob kelishini kuting ✨")
+    await event.reply("🤖 Salom! Men avto-javob botman Tez orada javob yoziladi✨")
 
 # Botni ishga tushurish
 async def main():
-    await client.start(phone=BOT_PHONE)
+    await client.start()  # endi kod so‘ramaydi
     print("✅ Userbot ishlayapti...")
     await update_name()
 
