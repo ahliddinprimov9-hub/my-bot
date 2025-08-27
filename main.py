@@ -6,7 +6,7 @@ import asyncio
 
 # API ma'lumotlari ENV-dan olinadi
 API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH"))
+API_HASH = os.environ.get("API_HASH")
 BOT_PHONE = os.environ.get("BOT_PHONE")  # telefon raqam ENV-dan olinadi
 
 # Session nomi va client
@@ -29,7 +29,7 @@ async def update_name():
 # Avto-javob (Lickada)
 @client.on(events.NewMessage(pattern="licka"))
 async def handler(event):
-    await event.reply("🤖 Salom! Men avto-javob botman ✨")
+    await event.reply("🤖 Salom! Men avto-javob botman Javob kelishini kuting ✨")
 
 # Botni ishga tushurish
 async def main():
